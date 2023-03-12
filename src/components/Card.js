@@ -10,13 +10,12 @@ const ClockCard = () => {
   }
   return (
     <div class="sx:w-4/4 md:4/4 w-2.2/12 h-auto box-border
-     bg-red-600 relative
-     p-1 rounded-lg shadow-md border border-green-800">
-     <div className='flex flex-col text-xs bg-slate-400 '>  
+     relative p-1 rounded-lg shadow-md border border-green-800">
+     <div className='flex relative flex-col text-xs  duration:100 ease-in'>  
     <p className='bg-slate-400'><span>TITLE :</span>: myclock</p>  
     <p><span>03-03-4009</span></p>  
     <p>location:   banglsad</p>
-    <p>set todo title</p>
+    <p>time differ: 4.44 hr</p>
 
     <button class="bg-slate-400 rounded text-sx mb-1 font-semibold
       hover:bg-opacity-75">
@@ -32,9 +31,9 @@ const ClockCard = () => {
       </div>
 
       <div className='w-11/12 flex justify-between 
-       relative bottom bottom-1 '>
+       absolute bottom bottom-1 '>
       <button onClick={()=>showEdit(false)}>
-        <svg className='h-3 w-3' xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+        <svg className='h-3 w-3 hover:bg-green-800 rounded-full hover:text-white' xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
       <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5z" />
         </svg>
 
@@ -42,7 +41,7 @@ const ClockCard = () => {
 
       <button>
 
-        <svg className='h-3 w-3' xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+        <svg className='h-3 w-3 hover:bg-red-800 rounded-full hover:text-white' xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
         <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
 

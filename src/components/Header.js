@@ -4,14 +4,14 @@ export const Header = () => {
   return (
     <div className='flex flex-row py-0 border-b shadow-slate-300'>
 
-    <div className='hidden xs:visible 
-    sm:visible sx:w-12/12 sm:w-12/12 md:w-10/12 bg-blue-600'>
+    <div className='block lg:hidden md:hidden sm:hidden
+     sx:w-12/12 sm:w-12/12 md:w-10/12 bg-blue-600'>
     visible invisible header
     </div>
 
 
-    <div className='sx:w-12/12 sm:w-12/12 md:w-12/12
-     sx:invisible md:invisible  md:w-2/12 sm:w-2/12 
+    <div className='hidden sx:w-12/12 sm:w-12/12 md:w-12/12
+      md:w-2/12 sm:w-2/12 sm:block
     '>logo</div>
 
 

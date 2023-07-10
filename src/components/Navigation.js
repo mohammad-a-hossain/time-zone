@@ -1,5 +1,7 @@
-import React,{useState} from 'react'
+import React,{useState,Fragment} from 'react'
 import logo from '../image/logo.png'
+import { Dialog, Transition } from '@headlessui/react'
+
 
 export const Navigation = () => {
     const [showLogbtn,setShowLogbtn] = useState(false)
@@ -7,13 +9,24 @@ export const Navigation = () => {
         setShowLogbtn(!showLogbtn)
     }
     const dark =false
+    
+
+    let [isOpen, setIsOpen] = useState(false)
+
+    function closeModal() {
+      setIsOpen(false)
+    }
+  
+    function openEditModal() {
+      setIsOpen(true)
+    }
            
   return (
-    <div className='container box-content mx-auto shadow-lg'>
+    <div className='container fixed top-0  box-content mx-auto bg-indigo-50 drop-shadow-xl'>
     
-     <div className='flex items-center justify-between bg-slate-50'>
+     <div className='flex items-center justify-between'>
      
-      <div className='flex items-center gap-2 list-none bg-green-300'>
+      <div className='flex items-center gap-2 list-none'>
       <li>
        <img src={logo} alt='ima' className='w-6 h-8' />
       </li>
@@ -30,12 +43,13 @@ export const Navigation = () => {
   
 
       </li>
+  
       </div>
 
 
       
      { /* <div className='sm:static md:flex  md:items-center bg-red-300 md:min-h-fit min-h-[300vh] md:w-auto left-0 top-10 w-full'>*/} 
-       <ul className='flex items-center gap-3 text-xs bg-slate-300'>
+       <ul className='flex items-center gap-3 text-xs'>
        <li className='text-xs'> 
        mohammad abu hossain
        </li>
@@ -51,10 +65,10 @@ export const Navigation = () => {
        </select>
        </li>
        <li>
-       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-4">
-       <path stroke-linecap="round" stroke-linejoin="round" d="M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93.398.164.855.142 1.205-.108l.737-.527a1.125 1.125 0 011.45.12l.773.774c.39.389.44 1.002.12 1.45l-.527.737c-.25.35-.272.806-.107 1.204.165.397.505.71.93.78l.893.15c.543.09.94.56.94 1.109v1.094c0 .55-.397 1.02-.94 1.11l-.893.149c-.425.07-.765.383-.93.78-.165.398-.143.854.107 1.204l.527.738c.32.447.269 1.06-.12 1.45l-.774.773a1.125 1.125 0 01-1.449.12l-.738-.527c-.35-.25-.806-.272-1.203-.107-.397.165-.71.505-.781.929l-.149.894c-.09.542-.56.94-1.11.94h-1.094c-.55 0-1.019-.398-1.11-.94l-.148-.894c-.071-.424-.384-.764-.781-.93-.398-.164-.854-.142-1.204.108l-.738.527c-.447.32-1.06.269-1.45-.12l-.773-.774a1.125 1.125 0 01-.12-1.45l.527-.737c.25-.35.273-.806.108-1.204-.165-.397-.505-.71-.93-.78l-.894-.15c-.542-.09-.94-.56-.94-1.109v-1.094c0-.55.398-1.02.94-1.11l.894-.149c.424-.07.765-.383.93-.78.165-.398.143-.854-.107-1.204l-.527-.738a1.125 1.125 0 01.12-1.45l.773-.773a1.125 1.125 0 011.45-.12l.737.527c.35.25.807.272 1.204.107.397-.165.71-.505.78-.929l.15-.894z" />
-       <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+       <svg  onClick={openEditModal} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-4 h-4 cursor-pointer hover:bg-indigo-400">
+       <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
      </svg>
+     
      
 
        </li>
@@ -64,7 +78,7 @@ export const Navigation = () => {
 
 
       
-       <div className='flex items-center gap-2 list-none bg-yellow-600'>
+       <div className='flex items-center gap-2 list-none border-2 p-1 rounded-full'>
         <li className=''>
         <img onClick={showLogout} src='https://www.shutterstock.com/image-photo/portrait-bearded-man-looking-camera-600w-1357097612.jpg' className='w-8 h-8 rounded-full' alt='imu' />
         </li>
@@ -76,7 +90,61 @@ export const Navigation = () => {
 
        
      </div>
-    
+
+     <Transition appear show={isOpen} as={Fragment}>
+     <Dialog as="div" className="relative z-20" onClose={closeModal}>
+       <Transition.Child
+         as={Fragment}
+         enter="ease-out duration-300"
+         enterFrom="opacity-0"
+         enterTo="opacity-100"
+         leave="ease-in duration-200"
+         leaveFrom="opacity-100"
+         leaveTo="opacity-0"
+       >
+         <div className="fixed inset-0 bg-black bg-opacity-25" />
+       </Transition.Child>
+ 
+       <div className="fixed inset-0 overflow-y-auto">
+         <div className="flex items-center justify-center min-h-full p-2 text-center">
+           <Transition.Child
+             as={Fragment}
+             enter="ease-out duration-300"
+             enterFrom="opacity-0 scale-95"
+             enterTo="opacity-100 scale-100"
+             leave="ease-in duration-200"
+             leaveFrom="opacity-100 scale-100"
+             leaveTo="opacity-0 scale-95"
+           >
+             <Dialog.Panel className="w-4/12 h-52 max-w-md p-2 overflow-hidden text-left align-middle transition-all transform bg-indigo-500 shadow-xl rounded-2xl">
+              <div className='flex p-1 bg-slate-200 mx-auto'>
+              <from className='flex flex-col justify-center'>
+              <input placeholder='place' className='m-1'/>
+              <input placeholder='place' className='m-1' />
+              <input placeholder='place'  className='m-1'/>
+               <input placeholder='place' className='m-1' />
+               <button type='submit' className='bg-slate-300 text-sm hover:bg-green-400'>update</button>
+              </from>
+ 
+              </div>
+ 
+               
+                 <button
+                   type="button"
+                   className="top-1 w-4 h-4 right-0 absolute inline-flex justify-center  text-xs font-medium text-blue-900 hover:bg-red-800 bg-blue-100 border border-transparent rounded-md hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                   onClick={closeModal}
+                 >
+                  X
+                 </button>
+               
+             </Dialog.Panel>
+           </Transition.Child>
+         </div>
+       </div>
+     </Dialog>
+   </Transition>
+      
     </div>
+
   )
 }

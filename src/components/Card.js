@@ -2,12 +2,13 @@ import React from 'react'
 import { useState } from 'react';
 
 const ClockCard = () => {
-  const [text,setText] = useState(false)
-  const [edit,setEdti] = useState(false)
+  const text =false
+
+  const [edit,setEdit] = useState(false)
   const [todo,setTodo] =useState(false)
 
   const showEdit =()=>{
-    setEdti(true)
+    setEdit(true)
   }
 
  const showTodoForm =()=>{
@@ -20,7 +21,8 @@ const ClockCard = () => {
     <div class="sx:w-4/4 md:4/4 w-2.2/12 h-auto box-border border border-indigo-600
      relative p-1 rounded-lg shadow-2xl  ">
 
-      <span onClick={()=>alert('edit')} className='w-4 h-5 absolute bg-slate-50 cursor-pointer hover:bg-indigo-900  top-0 right-0 mr-1 mt-1'><svg  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" >
+      <span  className='w-4 h-5 absolute bg-slate-50 cursor-pointer hover:bg-indigo-900  top-0 right-0 mr-1 mt-1'>
+      <svg onClick={showEdit}  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" >
       <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 12.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 18.75a.75.75 0 110-1.5.75.75 0 010 1.5z" />
        </svg>
        </span>
@@ -68,13 +70,17 @@ const ClockCard = () => {
 
        
 
-      <div className='bg-slate-100  mb-1 rounded-sm'>
+   { 
+    text ? (<div className='bg-slate-100  mb-1 rounded-sm'>
        <ul className='flex flex-col gap-1'>
        <li className='text-xs bg-slate-200 px-2'><span className='text-xs'>title todo </span><span className='text-xs'>44.22.02 pm</span> <span onClick={()=>alert('x')} className='text-xs text-red-700 cursor-pointer'>X</span></li> 
       
        </ul>
-      </div>
-      <span className='text-xs text-red-800 mx-auto'>no todo set</span>
+      </div>):null
+    
+    }
+        <span className='text-xs text-red-800 mx-auto'>no todo set</span>
+      
 
 
      </div>
@@ -84,7 +90,7 @@ const ClockCard = () => {
         p-2 absolute top-0  left-0 z-40">
          
          
-        <svg onClick={()=> setEdti(false)}  className='h-3 w-3' xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+        <svg onClick={()=> setEdit(false)}  className='h-3 w-3' xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
         <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
   
@@ -95,7 +101,7 @@ const ClockCard = () => {
          <p>time zonw<input /> </p> 
          <button>
          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-      <path stroke-linecap="squire" stroke-linejoin="squire" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+         <path stroke-linecap="squire" stroke-linejoin="squire" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
          </button>
          </form>

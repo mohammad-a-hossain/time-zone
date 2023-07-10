@@ -5,8 +5,8 @@ import { Navigation } from '../components/Navigation'
 import ClockCard from './../components/Card';
 
 
- const AppThree = () => {
-  let [isOpen, setIsOpen] = useState(false)
+ const Home = () => {
+    let [isOpen, setIsOpen] = useState(false)
 
   function closeModal() {
     setIsOpen(false)
@@ -18,21 +18,21 @@ import ClockCard from './../components/Card';
   const card= false
 
   return (
-    <>
+    <div className='container mx-auto bg-slate-50'>
     <Navigation/>
-     <section className='container box-content h-[100%vh] min-h-fit pb-3 mx-auto bg-indigo-50'>
+     <section className='container mt-6 box-content h-[100%vh] min-h-fit pb-3 mx-auto bg-indigo-50'>
      <br></br>
      
-       <button  onClick={openModal} className='mx-auto  mb-3 hover:bg-indigo-500 hover:text-gray-100 duration-300 bg-indigo-300 
+       <button  onClick={openModal} className='mx-auto  mb-1 hover:bg-indigo-500 hover:text-gray-100 duration-300  border-2
        p-2 rounded-md flex align-middle text-xs font-serif font-medium justify-center'> 
        + create your clock
        </button>
       
     
 
-       <div className='flex-wrap w-12/12 flex justify-center items-center px-4 mt-5 gap-5'>
+       <div className='flex-wrap w-12/12 h-screen flex justify-center items-center px-4 mt-5 gap-5'>
       
-       { card ?(<ClockCard/>):'no time-clock found'
+       { card ? (<><ClockCard/> <ClockCard/> <ClockCard/> <ClockCard/> </> ): (<p> yet to set your clock!!</p>)
       }
        </div>
       
@@ -97,7 +97,7 @@ import ClockCard from './../components/Card';
      </Dialog>
    </Transition>
 
-    </>
+    </div>
   )
 }
-export default AppThree
+export default Home

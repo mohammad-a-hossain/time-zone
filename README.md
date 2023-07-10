@@ -1,5 +1,22 @@
 # project : time zone
 
+## project Objective
+ * this project is based on front end time zone 
+ * here an user can use this apps for his maintaining his time location and create his time zone 
+
+## Project Requirement:
+
+## Project Features:
+
+## Project configurations amd installation:
+
+
+## Project Architecture
+
+
+## Project Deploy: 
+* Live Link: 
+
 ## command for formation
 ``` yarn create react-app react-tailwind-css-state ```
 ```yarn add -D tailwindcss postcss autoprefixer ```

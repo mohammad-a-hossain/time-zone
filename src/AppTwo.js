@@ -1,8 +1,9 @@
  import React, { useState } from "react";
  import './App.css'
- import useClock from './hooks/useClock';
+ //import useClock from './hooks/useClock';
  import { LocalClock } from "./components/LocalClock";
  import { ClockList } from "./components/ClockList";
+import shortid from "shortid";
  
    
 
@@ -34,6 +35,10 @@
        //   console.log(localDate)
 
            const [localClock, setLocalClock] = useState({...LOCAL_CLOCK})
+           const [clocks,setClocks] = useState([])
+
+
+          // console.log(clocks.length);  
 
            const updateLocalClock =(data) =>{
                setLocalClock({
@@ -42,14 +47,47 @@
                })
            }
 
+
+           const createClock =(clock) =>{
+               clock.id = shortid()
+               setClocks([...clocks, clock])
+                  
+           }
+
+           const updateClock= (updatedClock) =>{
+
+              const updateClockItem = clocks.map(clock =>{
+                if(clock.id === updatedClock.id){
+                    return updatedClock
+                }
+                return clock
+              })
+
+              setClocks(updateClockItem)
+           }
+
+
+           const deleteClock = (id) =>{
+            const updateClocks= clocks.filter((clock) =>clock.id !== id)
+            setClocks(updateClocks)
+           }
+       
+
+         
             return (
              <div style={{backgroundColor:'cyan',padding:'10px'}}>
                 {
-                   <LocalClock clock={localClock} updateClock={updateLocalClock}/>
+                   <LocalClock 
+                   clock={localClock} 
+                    updateClock={updateLocalClock} createClock={createClock}/>
                 }
               
 
-             <ClockList />
+             <ClockList 
+             clocks={clocks} 
+             localClock={localClock.date}
+             updateClock={updateClock} 
+             deleteClock ={deleteClock }/>
              </div>
             );
           }
